@@ -19,6 +19,7 @@ if (isset($_GET['game'])) {
         echo 'Página não existente';
     } else {
 //         var_dump($html);
+
     
 //         echo $html;
            
