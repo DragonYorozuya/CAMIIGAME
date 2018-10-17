@@ -19,8 +19,6 @@ if (isset($_GET['game'])) {
         echo 'Página não existente';
     } else {
 //         var_dump($html);
-
-    
 //         echo $html;
            
         $game = array(); 
@@ -33,8 +31,6 @@ if (isset($_GET['game'])) {
            && preg_match('/center"><img style="max-width: 200px;" src="\/images\/boxart\/(.*?)">/', $html, $img)
             ){
 //             var_dump($img);
-
-                
             $game['cod'] = $cod[1];
             $game['nome'] = $nome[1];
             $game['plataforma'] = $plataforma[1];
@@ -43,28 +39,9 @@ if (isset($_GET['game'])) {
             $game['img']['url'] = "https://myvideogamelist.com/images/boxart/".$img[1];
             $game['img']['nome'] = $img[1];
         }
-        
-       
-        
+ 
         echo json_encode($game,true);
         return;
-        
-
-    
-    
-//         if(preg_match_all('/class=\"media-heading\"><a href=\"(.*?)\">(.*?)<\/a>/', $html, $tit)){
-//     //         var_dump($tit);
-    
-//             foreach($tit[0] as $key=>$g){
-//     //             var_dump($g);
-//                 $games[$key]["url"] = "https://myvideogamelist.com".$tit[1][$key];
-//                 $games[$key]["game"] = $tit[2][$key];
-//             }
-            
-//             echo json_encode($games,true);
-//             return true;
-//         }
-    
     }
 
 }

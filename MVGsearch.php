@@ -1,6 +1,5 @@
 <?php
 if (isset($_GET['search'])) {
-    
     $ch = @curl_init();
     //@curl_setopt($ch, CURLOPT_URL,'https://myanimelist.net/anime/34332');
     @curl_setopt($ch, CURLOPT_URL,'https://myvideogamelist.com/search');
@@ -30,19 +29,21 @@ if (isset($_GET['search'])) {
 //             var_dump($nome);
             
             $games[0]["url"] = "https://myvideogamelist.com/gameprofile/".$unico[1];
+            $games[0]["cod"] = $unico[1];
             $games[0]["game"] = $nome[1];
             echo json_encode($games,true);
             return;
         }
     
     
-        if(preg_match_all('/class=\"media-heading\"><a href=\"(.*?)\">(.*?)<\/a>/', $html, $tit)){
+        if(preg_match_all('/class=\"media-heading\"><a href=\"\/gameprofile\/(.*?)\/.*?\">(.*?)<\/a>/', $html, $tit)){
     //         var_dump($tit);
     
             foreach($tit[0] as $key=>$g){
     //             var_dump($g);
-                $games[$key]["url"] = "https://myvideogamelist.com".$tit[1][$key];
+                $games[$key]["cod"] = $tit[1][$key];
                 $games[$key]["game"] = $tit[2][$key];
+                $games[$key]["url"] = "https://myvideogamelist.com/gameprofile/".$tit[1][$key];
             }
             
             echo json_encode($games,true);
@@ -54,5 +55,4 @@ if (isset($_GET['search'])) {
 }
 echo '{"sit":1}';
 return false;
-
 ?>
