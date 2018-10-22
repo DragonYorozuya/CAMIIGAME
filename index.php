@@ -81,6 +81,9 @@
     .relogio{
        font-size: 0.9em;
     }
+    .UserName{
+        display: none;
+    }
 }
 </style>
 <body>
@@ -91,21 +94,21 @@
 				<!-- TOP -->
 				<div class="row m-0 p-0 col-md-12 boxTOP">
     				<div class="d-flex flex-row dragscroll col-md-9  col-9 pt-3 pl-5 ic-box" id="style-4">
-    					<div class="boxUser" ng-click="userSelect(1)">
-    					 	<img alt="" class="ic mr-2 rounded-circle" src="img/switch/icon_25.gif">
-    					 	<div class="text-center" >Guh</div>
+    					<div class="boxUser" >
+    					 	<img ng-click="userSelect(1,$event)" class="ic mr-2 rounded-circle" src="img/switch/icon_25.gif">
+    					 	<div class="text-center UserName" >Guh</div>
     					 </div>
-    					<div class="boxUser" ng-click="userSelect(2)">
-    					 	<img alt="" class="ic mr-2 rounded-circle" src="img/switch/icon_26.gif">
-    					 	<div class="text-center" >Gustavo</div>
+    					<div class="boxUser" >
+    					 	<img ng-click="userSelect(2,$event)" class="ic mr-2 rounded-circle" src="img/switch/icon_26.gif">
+    					 	<div class="text-center UserName" >Gustavo</div>
     					 </div>
-    					<div class="boxUser" ng-click="userSelect(3)">
-    					 	<img alt="" class="ic mr-2 rounded-circle" src="img/switch/icon_23.gif">
-    					 	<div class="text-center" >Jonata</div>
+    					<div class="boxUser" >
+    					 	<img ng-click="userSelect(3,$event)" class="ic mr-2 rounded-circle" src="img/switch/icon_23.gif">
+    					 	<div class="text-center UserName" >Jonata</div>
     					 </div>
-    					<div class="boxUser" ng-click="userSelect(4)">
-    					 	<img alt="" class="ic mr-2 rounded-circle" src="img/switch/icon_59.gif">
-    					 	<div class="text-center" >Paulo</div>
+    					<div class="boxUser" >
+    					 	<img ng-click="userSelect(4,$event)" class="ic mr-2 rounded-circle" src="img/switch/icon_59.gif">
+    					 	<div class="text-center UserName" >Paulo</div>
     					</div> 
     					
     					 
@@ -190,7 +193,11 @@
 
         $scope.camii = games;
 
-        $scope.userSelect=function(cod){
+        $scope.userSelect=function(cod,user){
+//             console.log(user.target);
+            $(".UserName.d-block").removeClass("d-block");
+			$(user.target).parent().find(".UserName").addClass("d-block");
+            
 			$scope.filtro = {user : cod};
         }
 		
